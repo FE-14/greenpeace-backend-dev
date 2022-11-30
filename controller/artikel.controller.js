@@ -7,7 +7,7 @@ function createArtikel(req, res) {
     } else {
       const newDate = convertDate(artikel.createdAt);
       models.Artikels.update(
-        { createdAt: newDate },
+        { postDate: newDate },
         {
           where: {
             id: artikel.id,

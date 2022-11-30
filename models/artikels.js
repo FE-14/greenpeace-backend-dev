@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     tags_1: DataTypes.STRING,
     tags_2: DataTypes.STRING,
     tags_3: DataTypes.STRING,
-    imageUrl: DataTypes.STRING
+    imageUrl: DataTypes.STRING,
+    postDate: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Artikels',
