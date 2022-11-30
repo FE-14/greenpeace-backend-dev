@@ -15,18 +15,6 @@ function verifyToken(req, res, next) {
   }
 }
 
-// function ifAdmin(req, res, next) {
-//   const admin = 1;
-//   if (req.cookies.userID != admin) {
-//     res.status(401).json({
-//       message: "Can't Access, You're not Admin",
-//     });
-//   } else {
-//     next();
-//   }
-// }
-
 module.exports = {
   verifyToken: verifyToken,
-  //   ifAdmin: ifAdmin,
 };
