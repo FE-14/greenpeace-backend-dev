@@ -227,7 +227,7 @@ Response :
 Request :
 
 - Method : POST
-- Endpoint : `/articles`
+- Endpoint : `API/articles`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -256,50 +256,12 @@ Response :
 }
 ```
 
-### **b. add Point to Participant**
-
-Request :
-
-- Method : POST
-- Endpoint : `/participants/:participantId/point`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Body :
-
-```json
-{
-  "eventId": 12,
-  "weight": 50
-}
-```
-
-Response :
-
-```json
-{
-  "message": "success addPoint participant",
-  "result": {
-    "participant": {
-      "id": 10,
-      "email": "sayapeserta@mail.com"
-    },
-    "event": {
-      "id": 12,
-      "name": "Event Valentine"
-    },
-    "point": 25
-  }
-}
-```
-
-### **c. get All User/Admin**
+### **b. get All artikel**
 
 Request :
 
 - Method : GET
-- Endpoint : `/participants/:participantId/point`
+- Endpoint : `API/articles`
 - Header :
   - Accept: application/json
 
@@ -307,131 +269,38 @@ Response :
 
 ```json
 {
-  "message": "success getAllPoint participant",
-  "result": {
-    "participant": {
-      "id": 10,
-      "email": "sayapeserta@mail.com"
-    },
-    "point": 123
-  }
-}
-```
 
-### **d. get Point from Participant ID in 1 Event**
-
-Request :
-
-- Method : GET
-- Endpoint : `/participants/:participantId/point/event/:eventId`
-- Header :
-  - Accept: application/json
-
-Response :
-
-```json
-{
-  "message": "success getEventPoint participant",
-  "result": {
-    "participant": {
-      "id": 10,
-      "email": "sayapeserta@mail.com"
-    },
-    "event": {
-      "id": 12,
-      "name": "Event Valentine"
-    },
-    "point": 25
-  }
-}
-```
-
-## 3. Roles
-
-| Field Name | Type     | Description     |
-| ---------- | -------- | --------------- |
-| id         | ObjectId | Users ID        |
-| name       | string   | Users Role Name |
-
-### **a. create Roles**
-
-Request :
-
-- Method : POST
-- Endpoint : `/roles`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Body :
-
-```json
-{
-  "name": "superAdmin"
-}
-```
-
-Response :
-
-```json
-{
-  "message": "success create role",
-  "result": {
-    "id": 1,
-    "name": "superAdmin"
-  }
-}
-```
-
-## 4. Events
-
-| Field Name | Type     | Description     |
-| ---------- | -------- | --------------- |
-| id         | ObjectId | Users ID        |
-| name       | string   | Users Role Name |
-
-### **a. create Events**
-
-Request :
-
-- Method : POST
-- Endpoint : `/events`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Body :
-
-```json
-{
-  "name": "Event Valentine",
-  "date": "14-02-2022"
-}
-```
-
-Response :
-
-```json
-{
-  "message": "success create event",
-  "result": {
-    "id": 1,
-    "name": "Event Valentine",
-    "date": "14-02-2022",
-    "createdBy": {
+    {
       "id": 1,
-      "email": "contohadmin@mail.com"
+      "title": "tittle",
+      "authorName": "author",
+      "postDescription": "description",
+      "postContent": "content",
+      "tags_1": "tag1",
+      "tags_2": "tag2",
+      "tags_3": "tag3",
+      "imageUrl": "url"
+    },
+    {
+      "id": 2,
+      "title": "tittle2",
+      "authorName": "author2",
+      "postDescription": "description2",
+      "postContent": "content2",
+      "tags_1": "tag1_2",
+      "tags_2": "tag2_2",
+      "tags_3": "tag3_2",
+      "imageUrl": "url2"
     }
-  }
 }
 ```
 
-### **d. get Event By ID (also include points)**
+### **d. get User by id**
 
 Request :
 
 - Method : GET
-- Endpoint : `/events/:eventId`
+- Endpoint : `API/articles/:id`
 - Header :
   - Accept: application/json
 
@@ -439,52 +308,24 @@ Response :
 
 ```json
 {
-  "message": "success get event by id",
-  "result": {
-    "id": 12,
-    "name": "Event Valentine",
-    "date": "14-02-2022",
-    "createdBy": {
-      "id": 1,
-      "email": "contohadmin@mail.com"
-    },
-    "leaderBoard": [
-      {
-        "id": 1,
-        "email": "participant1@gmail.com",
-        "point": 99
-      },
-      {
-        "id": 4,
-        "email": "participant4@gmail.com",
-        "point": 90
-      },
-      {
-        "id": 10,
-        "email": "participant10@gmail.com",
-        "point": 80
-      }
-    ]
-  }
+  "id": 1,
+  "title": "tittle",
+  "authorName": "author",
+  "postDescription": "description",
+  "postContent": "content",
+  "tags_1": "tag1",
+  "tags_2": "tag2",
+  "tags_3": "tag3",
+  "imageUrl": "url"
 }
 ```
 
-## 5. Blog
-
-| Field Name  | Type     | Description      |
-| ----------- | -------- | ---------------- |
-| id          | ObjectId | Users ID         |
-| thumbnail   | string   | Blog thumbnail   |
-| title       | string   | Blog title       |
-| description | string   | Blog description |
-| content     | string   | Blog Roles       |
-
-### **a. User Login**
+### **e. edit dan update User**
 
 Request :
 
-- Method : POST
-- Endpoint : `/users/login`
+- Method : PATCH
+- Endpoint : `API/articles/:id`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -493,8 +334,10 @@ Body :
 
 ```json
 {
-  "email": "contoh@mail.com",
-  "password": "passwoRd123!@#"
+  "title": "tittle3",
+  "authorName": "author3",
+  "postDescription": "description3",
+  "postContent": "content3"
 }
 ```
 
@@ -502,61 +345,16 @@ Response :
 
 ```json
 {
-  "message": "success users login",
-  "result": {
-    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOYXdhc3RlIiwiaXNzIjoiMTAiLCJleHAiOjE2NDAwODEwNjYsImlhdCI6MTY0MDA4MTA2Nn0.yt6OtuvtPIeUncCeyCyMvLrT7dUwpo-7BLhSnkC_dzk"
-  }
+  "message": "Artikel updated"
 }
 ```
 
-### **b. add blogs/**
+### **g. delete Artikel**
 
 Request :
 
-- Method : POST
-- Endpoint : `/`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Body :
-
-```json
-{
-    {
-    "thumbnail": "gamabr2.jpg",
-    "title":"berita4",
-    "description":"ini berita",
-    "content":"content1"
-}
-}
-```
-
-Response :
-
-```json
-{
-  "message": "success create blog",
-  "result": {
-    "id": 7,
-    "thumbnail": "gamabr2.jpg",
-    "title": "berita4",
-    "description": "ini berita",
-    "content": "content1",
-    "date": "2021-12-24T10:44:00.033Z",
-    "userId": 4,
-    "updatedAt": "2021-12-24T10:44:00.034Z",
-    "createdAt": "2021-12-24T10:44:00.034Z"
-  }
-}
-```
-
-### **c. get All Blog**
-
-Request :
-
-- Method : GET
-- Endpoint : `/`
+- Method : DELETE
+- Endpoint : `API/articles/:id`
 - Header :
   - Accept: application/json
 
@@ -564,150 +362,6 @@ Response :
 
 ```json
 {
-  "result": [
-    {
-      "id": 3,
-      "thumbnail": "gamabr2.jpg",
-      "title": "berita3",
-      "description": "ini berita",
-      "content": "",
-      "date": "2021-12-23T14:11:45.000Z",
-      "userId": 4,
-      "createdAt": "2021-12-23T14:11:45.000Z",
-      "updatedAt": "2021-12-23T14:11:45.000Z"
-    },
-    {
-      "id": 4,
-      "thumbnail": "gamabr2.jpg",
-      "title": "berita3",
-      "description": "ini berita",
-      "content": "",
-      "date": "2021-12-23T14:11:48.000Z",
-      "userId": 4,
-      "createdAt": "2021-12-23T14:11:48.000Z",
-      "updatedAt": "2021-12-23T14:11:48.000Z"
-    },
-    {
-      "id": 5,
-      "thumbnail": "gamabr2.jpg",
-      "title": "berita3",
-      "description": "ini berita",
-      "content": "",
-      "date": "2021-12-23T14:11:50.000Z",
-      "userId": 4,
-      "createdAt": "2021-12-23T14:11:50.000Z",
-      "updatedAt": "2021-12-23T14:11:50.000Z"
-    },
-    {
-      "id": 6,
-      "thumbnail": "gamabr2.jpg",
-      "title": "berita3",
-      "description": "ini berita",
-      "content": "",
-      "date": "2021-12-23T14:11:51.000Z",
-      "userId": 4,
-      "createdAt": "2021-12-23T14:11:51.000Z",
-      "updatedAt": "2021-12-23T14:11:51.000Z"
-    },
-    {
-      "id": 7,
-      "thumbnail": "gamabr2.jpg",
-      "title": "berita4",
-      "description": "ini berita",
-      "content": "",
-      "date": "2021-12-24T10:44:00.000Z",
-      "userId": 4,
-      "createdAt": "2021-12-24T10:44:00.000Z",
-      "updatedAt": "2021-12-24T10:44:00.000Z"
-    }
-  ]
-}
-```
-
-### **d. Get Blog Id**
-
-Request :
-
-- Method : GET
-- Endpoint : `/blogs/:id`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Body :
-
-```json
-{
-  "message": "success get data Blogs",
-  "result": {
-    "id": 3,
-    "thumbnail": "gamabr2.jpg",
-    "title": "berita3",
-    "description": "ini berita",
-    "content": "",
-    "date": "2021-12-23T14:11:45.000Z",
-    "userId": 4,
-    "createdAt": "2021-12-23T14:11:45.000Z",
-    "updatedAt": "2021-12-23T14:11:45.000Z"
-  }
-}
-```
-
-### \*_e. update Blog blogs/id_
-
-Request :
-
-- Method : Put
-- Endpoint : `/blogs/:id/`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Body :
-
-```json
-{
-  "thumbnail": "gamabr2.jpg",
-  "title": "Skilvul"
-}
-```
-
-Response :
-
-```json
-{
-  "message": "update success data Blogs",
-  "result": {
-    "id": 3,
-    "thumbnail": "gamabr2.jpg",
-    "title": "Skilvul",
-    "description": "ini berita",
-    "content": "",
-    "date": "2021-12-24T10:49:45.000Z",
-    "userId": 4,
-    "createdAt": "2021-12-23T14:11:45.000Z",
-    "updatedAt": "2021-12-24T10:49:45.000Z"
-  }
-}
-```
-
-### **e. delete Blog from Blog/id**
-
-Request :
-
-- Method : DEL
-- Endpoint : `/blog/id`
-- Header :
-  - Content-Type: application/json
-  - Accept: application/json
-
-Body :
-
-```json
-{
-  "message": "delete success data Blogs",
-  "result": {
-    "message": "Blog with id 3 was deleted successfully"
-  }
+  "message": "User Deleted"
 }
 ```
