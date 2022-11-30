@@ -95,7 +95,7 @@ function login(req, res) {
                 // secure: true,
               });
 
-              res.cookie("userID", userId);
+              // res.cookie("userID", userId);
             } else {
               res.status(401).json({
                 message: "Invalid credentials!",
@@ -136,8 +136,8 @@ function logout(req, res) {
         }
       );
       res.clearCookie("refreshToken");
-      res.clearCookie("userID");
-      res.clearCookie("eventID");
+      // res.clearCookie("userID");
+      // res.clearCookie("eventID");
       return res.status(200).json({ message: "Logout Successful!" });
     }
   });
