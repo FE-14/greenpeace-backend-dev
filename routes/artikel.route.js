@@ -3,10 +3,10 @@ const artikelController = require("../controller/artikel.controller");
 // const verify = require("../middleware/auth.token");
 const router = express.Router();
 
-router.post("/artikels", artikelController.createArtikel);
-router.get("/artikels", artikelController.getArtikel);
-router.get("/artikels/:id", artikelController.getArtikelbyId);
-router.patch("/artikels/:id", artikelController.updateArtikel);
-router.delete("/artikels/:id", artikelController.deleteArtikel);
+router.post("/articles", artikelController.createArtikel);
+router.get("/articles", artikelController.getArtikel);
+router.get("/articles/:id", artikelController.getArtikelbyId);
+router.patch("/articles/:id", artikelController.updateArtikel);
+router.delete("/articles/:id", artikelController.deleteArtikel);
 
 module.exports = router;
