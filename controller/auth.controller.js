@@ -66,7 +66,7 @@ function login(req, res) {
               const accessToken = jwt.sign(
                 { userId, name, email },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: "300s" },
+                { expiresIn: "1h" },
                 function (err, accessToken) {
                   res.status(200).json({
                     message: "Authentication successful!",

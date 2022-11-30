@@ -5,6 +5,15 @@ function createArtikel(req, res) {
     if (!artikel) {
       console.log(error.message);
     } else {
+      const newDate = convertDate(artikel.createdAt);
+      models.Artikels.update(
+        { createdAt: newDate },
+        {
+          where: {
+            id: artikel.id,
+          },
+        }
+      );
       res.status(200).json({ message: "Artikel Created" });
     }
   });
@@ -33,10 +42,14 @@ function getArtikelbyId(req, res) {
         message: "Invalid credentials!",
       });
     } else {
-      //   res.cookie("eventID", event.id);
       res.status(200).json(artikel);
     }
   });
+}
+
+function convertDate(date) {
+  var newDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+  return newDate;
 }
 
 function updateArtikel(req, res) {
