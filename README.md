@@ -104,7 +104,7 @@ Response :
         "name": "contoh2",
         "email": "contoh2@gmail.com",
         "password": "password2",
-        "refresh_token": "token2
+        "refresh_token": "token2"
     }
 }
 ```
