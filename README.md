@@ -130,7 +130,34 @@ Response :
 }
 ```
 
-### **e. get Token Refresh**
+### **e. edit dan update User**
+
+Request :
+
+- Method : PATCH
+- Endpoint : `API/users/:id`
+- Header :
+  - Content-Type: application/json
+  - Accept: application/json
+
+Body :
+
+```json
+{
+  "name": "contoh2",
+  "email": "contoh2@mail.com"
+}
+```
+
+Response :
+
+```json
+{
+  "message": "User updated"
+}
+```
+
+### **f. get Token Refresh**
 
 Request :
 
@@ -147,7 +174,7 @@ Response :
 }
 ```
 
-### **f. delete User**
+### **g. delete User**
 
 Request :
 
@@ -164,7 +191,7 @@ Response :
 }
 ```
 
-### **g. User Logout**
+### **h. User Logout**
 
 Request :
 
@@ -181,23 +208,26 @@ Response :
 }
 ```
 
-## 2. Participants
+## 2. Artikels
 
-| Field Name | Type     | Description        |
-| ---------- | -------- | ------------------ |
-| id         | ObjectId | Participants ID    |
-| email      | string   | Participants Email |
-| name       | string   | Participants Name  |
-| eventId    | array    | Event ID           |
-| weight     | array    | Users Role         |
-| point      | array    | Users Point        |
+| Field Name      | Type     |
+| --------------- | -------- |
+| id              | ObjectId |
+| title           | string   |
+| authorName      | string   |
+| postDescription | text     |
+| postContent     | text     |
+| tags_1          | string   |
+| tags_1          | string   |
+| tags_1          | string   |
+| imageUrl        | string   |
 
-### **a. add Participants**
+### **a. add Artikel**
 
 Request :
 
 - Method : POST
-- Endpoint : `/participants`
+- Endpoint : `/articles`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -206,7 +236,15 @@ Body :
 
 ```json
 {
-  "email": "sayapeserta@mail.com"
+  "id": 1,
+  "title": "tittle",
+  "authorName": "author",
+  "postDescription": "description",
+  "postContent": "content",
+  "tags_1": "tag1",
+  "tags_2": "tag2",
+  "tags_3": "tag3",
+  "imageUrl": "url"
 }
 ```
 
@@ -214,11 +252,7 @@ Response :
 
 ```json
 {
-  "message": "success create participant",
-  "result": {
-    "id": 10,
-    "email": "sayapeserta@mail.com"
-  }
+  "message": "Artikel Created"
 }
 ```
 
