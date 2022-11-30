@@ -1,3 +1,4 @@
+const { response } = require("express");
 const models = require("../models/index");
 
 function createArtikel(req, res) {
@@ -5,15 +6,6 @@ function createArtikel(req, res) {
     if (!artikel) {
       console.log(error.message);
     } else {
-      const newDate = convertDate(artikel.createdAt);
-      models.Artikels.update(
-        { postDate: newDate },
-        {
-          where: {
-            id: artikel.id,
-          },
-        }
-      );
       res.status(200).json({ message: "Artikel Created" });
     }
   });
@@ -45,11 +37,6 @@ function getArtikelbyId(req, res) {
       res.status(200).json(artikel);
     }
   });
-}
-
-function convertDate(date) {
-  var newDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
-  return newDate;
 }
 
 function updateArtikel(req, res) {
