@@ -86,6 +86,7 @@ Request :
 - Endpoint : `API/users`
 - Header :
   - Accept: application/json
+  - Authorization : Bearer token
 
 Response :
 
@@ -117,6 +118,7 @@ Request :
 - Endpoint : `API/users/:id`
 - Header :
   - Accept: application/json
+  - Authorization : Bearer token
 
 Response :
 
@@ -139,6 +141,7 @@ Request :
 - Header :
   - Content-Type: application/json
   - Accept: application/json
+  - Authorization : Bearer token
 
 Body :
 
@@ -182,6 +185,7 @@ Request :
 - Endpoint : `API/users/:id`
 - Header :
   - Accept: application/json
+  - Authorization : Bearer token
 
 Response :
 
@@ -231,6 +235,7 @@ Request :
 - Header :
   - Content-Type: application/json
   - Accept: application/json
+  - Authorization : Bearer token
 
 Body :
 
@@ -329,6 +334,7 @@ Request :
 - Header :
   - Content-Type: application/json
   - Accept: application/json
+  - Authorization : Bearer token
 
 Body :
 
@@ -357,6 +363,7 @@ Request :
 - Endpoint : `API/articles/:id`
 - Header :
   - Accept: application/json
+  - Authorization : Bearer token
 
 Response :
 
