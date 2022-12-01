@@ -2,7 +2,7 @@ const models = require("../models/index");
 
 function getUsers(req, res) {
   models.Users.findAll({
-    attributes: ["id", "name", "email"],
+    attributes: ["id", "name", "email", "role"],
   }).then((user) => {
     if (user === null) {
       res.status(401).json({
@@ -17,7 +17,7 @@ function getUsers(req, res) {
 function getUserbyId(req, res) {
   models.Users.findOne(
     {
-      attributes: ["id", "name", "email"],
+      attributes: ["id", "name", "email", "role"],
     },
     {
       where: {
