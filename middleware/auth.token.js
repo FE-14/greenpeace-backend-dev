@@ -15,6 +15,17 @@ function verifyToken(req, res, next) {
   }
 }
 
+function ifAdmin(req, res, next) {
+  if (req.cookies.roleUser != "admin") {
+    res.status(401).json({
+      message: "Can't Access, You're not Admin",
+    });
+  } else {
+    next();
+  }
+}
+
 module.exports = {
   verifyToken: verifyToken,
+  ifAdmin: ifAdmin,
 };
