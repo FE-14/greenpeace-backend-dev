@@ -14,6 +14,7 @@ const port = process.env.PORT;
 app.use(
   cors({
     credentials: true,
+    origin: "http://localhost:5173",
   })
 );
 app.use(cookieParser());
@@ -22,8 +23,6 @@ app.use(express.json());
 app.use(userRoute);
 app.use(authRoute);
 app.use(artikelRoute);
-
-app.get("/", (req, res) => res.json({ data: "Secret data" }));
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
