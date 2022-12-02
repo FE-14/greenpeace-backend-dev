@@ -300,7 +300,7 @@ Response :
 }
 ```
 
-### **d. get User by id**
+### **d. get Artikel by id**
 
 Request :
 
@@ -325,7 +325,7 @@ Response :
 }
 ```
 
-### **e. edit dan update User**
+### **e. edit dan update Artikel**
 
 Request :
 
