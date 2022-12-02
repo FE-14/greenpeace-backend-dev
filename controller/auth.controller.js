@@ -100,7 +100,11 @@ function login(req, res) {
                 maxAge: 24 * 60 * 60 * 1000,
                 secure: true,
               });
-              res.cookie("roleUser", role);
+              res.cookie("roleUser", role, {
+                httpOnly: true,
+                maxAge: 24 * 60 * 60 * 1000,
+                secure: true,
+              });
             } else {
               res.status(401).json({
                 message: "Invalid credentials!",
